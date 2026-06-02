@@ -2,7 +2,6 @@ import streamlit as st
 
 from parser import parse_srt
 from parser import build_srt
-
 from translator import translate_batch
 
 st.set_page_config(
@@ -23,7 +22,8 @@ type=["srt"]
 )
 
 if uploaded_file:
-    
+
+```
 st.success("فایل بارگذاری شد")
 
 if st.button("شروع ترجمه"):
@@ -93,3 +93,4 @@ if st.button("شروع ترجمه"):
             file_name="translated.srt",
             mime="text/plain"
         )
+```
