@@ -23,6 +23,7 @@ type=["srt"]
 )
 
 if uploaded_file:
+    
 st.success("فایل بارگذاری شد")
 
 if st.button("شروع ترجمه"):
