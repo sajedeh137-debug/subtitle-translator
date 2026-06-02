@@ -1,7 +1,6 @@
 import streamlit as st
 
-from parser import parse_srt
-from parser import build_srt
+from parser import parse_srt, build_srt
 from translator import translate_batch
 
 st.set_page_config(
@@ -21,22 +20,19 @@ uploaded_file = st.file_uploader(
 type=["srt"]
 )
 
-if uploaded_file:
+if uploaded_file is not None:
 
-
+```
 st.success("فایل بارگذاری شد")
 
 if st.button("شروع ترجمه"):
 
     if not api_key:
-
         st.error("API Key را وارد کنید")
 
     else:
 
-        content = uploaded_file.read()
-
-        content = content.decode(
+        content = uploaded_file.read().decode(
             "utf-8",
             errors="ignore"
         )
@@ -46,14 +42,9 @@ if st.button("شروع ترجمه"):
         progress = st.progress(0)
 
         batch_size = 10
-
         total = len(subtitles)
 
-        for start in range(
-            0,
-            total,
-            batch_size
-        ):
+        for start in range(0, total, batch_size):
 
             end = start + batch_size
 
@@ -73,19 +64,12 @@ if st.button("شروع ترجمه"):
                 batch[i]["text"] = text
 
             progress.progress(
-                min(
-                    end / total,
-                    1.0
-                )
+                min(end / total, 1.0)
             )
 
-        final_srt = build_srt(
-            subtitles
-        )
+        final_srt = build_srt(subtitles)
 
-        st.success(
-            "ترجمه کامل شد"
-        )
+        st.success("ترجمه کامل شد")
 
         st.download_button(
             label="دانلود زیرنویس",
