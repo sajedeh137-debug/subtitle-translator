@@ -22,8 +22,7 @@ type=["srt"]
 
 if uploaded_file is not None:
 
-```
-st.success("فایل بارگذاری شد")
+if st.success("فایل بارگذاری شد")
 
 if st.button("شروع ترجمه"):
 
