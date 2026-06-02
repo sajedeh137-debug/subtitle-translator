@@ -23,8 +23,6 @@ type=["srt"]
 )
 
 if uploaded_file:
-
-```
 st.success("فایل بارگذاری شد")
 
 if st.button("شروع ترجمه"):
@@ -94,4 +92,3 @@ if st.button("شروع ترجمه"):
             file_name="translated.srt",
             mime="text/plain"
         )
-```
